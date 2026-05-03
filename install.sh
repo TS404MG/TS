@@ -2,13 +2,15 @@
 
 pkg update -y
 pkg upgrade -y
+pkg install sox -y
 
 # Installation des outils de base avec vérification
 echo -e "\033[1;34m> Installation de Python...\033[0m"
 pkg install python -y || { echo -e "\033[1;31mErreur: Python n'a pas pu être installé !\033[0m"; exit 1; }
+pip install regex aiofiles bs4 requests instagrapi==2.0 -y
 
 echo -e "\033[1;36m> Installation de Git...\033[0m"
-pkg install git -y || { echo -e "\033[1;31mErreur: Git n'a pas pu être installé !\033[0m"; exit 1; }
+pkg install git git-lfs -y || { echo -e "\033[1;31mErreur: Git n'a pas pu être installé !\033[0m"; exit 1; }
 
 echo -e "\033[1;35m> Installation de libjpeg-turbo et zlib...\033[0m"
 pkg install libjpeg-turbo zlib -y || { echo -e "\033[1;31mErreur: libjpeg-turbo ou zlib n'ont pas pu être installés !\033[0m"; exit 1; }
@@ -19,7 +21,7 @@ echo -e "\033[1;33m> Autorisation de stockage...\033[0m"
 termux-setup-storage
 
 # Liste des modules Python à installer avec versions compatibles
-MODULES="telethon rich pillow==10.3.0 termcolor requests instagrapi<2"
+MODULES="telethon rich pillow termcolor"
 FAILED_MODULES=()
 SUCCESS_MODULES=()
 
@@ -70,8 +72,8 @@ END
 fi
 
 # (Optionnel) Passage dans le dossier TS et exécution
-if [ -d "TS" ]; then
-    cd TS
+if [ -d "~/TS" ]; then
+    cd ~/TS
     chmod +x *
     if [ -f "./ts.bin" ]; then
         ./ts.bin
