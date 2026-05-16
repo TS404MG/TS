@@ -9,7 +9,7 @@ pkg install sox -y
 # Installation de Python
 echo -e "\033[1;34m> Installation de Python...\033[0m"
 pkg install python -y || { echo -e "\033[1;31mErreur: Python n'a pas pu être installé !\033[0m"; exit 1; }
-
+pip install gtts -y && pip install groq -y
 # Installation de Git
 echo -e "\033[1;36m> Installation de Git...\033[0m"
 pkg install git git-lfs -y || { echo -e "\033[1;31mErreur: Git n'a pas pu être installé !\033[0m"; exit 1; }
