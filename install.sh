@@ -12,14 +12,14 @@ pkg install python -y || { echo -e "\033[1;31mErreur: Python n'a pas pu être in
 pip install gtts -y && pip install groq -y
 # Installation de Git
 echo -e "\033[1;36m> Installation de Git...\033[0m"
-pkg install git git-lfs -y || { echo -e "\033[1;31mErreur: Git n'a pas pu être installé !\033[0m"; exit 1; }
+pkg install git -y || { echo -e "\033[1;31mErreur: Git n'a pas pu être installé !\033[0m"; exit 1; }
 
 # Installation de libjpeg-turbo, zlib et libandroid-support
 echo -e "\033[1;35m> Installation de libjpeg-turbo, zlib et libandroid-support...\033[0m"
 pkg install libjpeg-turbo zlib libandroid-support -y || { echo -e "\033[1;31mErreur: libjpeg-turbo, zlib ou libandroid-support n'ont pas pu être installés !\033[0m"; exit 1; }
 
 # Autorisation de stockage
-echo -e "\033[1;33m> Autorisation de stockage...\033[0m"
+echo -e "\033[1;33m> Autorisation de stockage, appyez sur y pour accepter...\033[0m"
 termux-setup-storage
 
 # Installation des modules Python de base (hors instagrapi)
